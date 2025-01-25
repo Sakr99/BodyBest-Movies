@@ -57,6 +57,7 @@ export default function Footer() {
           <a href="https://whatsapp.com/">
             <i className="fa-brands fa-whatsapp"></i>
           </a>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic qui vitae culpa ipsa accusantium. Doloribus, ut quae veniam iste, quidem sit totam, corporis ea molestias inventore doloremque officia quam dignissimos.</p>
         </li>
       </footer>
     </>
