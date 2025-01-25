@@ -8,7 +8,7 @@ export default function Footer() {
       <footer className="position-relative bg-secondary text-dark bottom-0 start-50 translate-middle-x p-5 ">
         <div className="container text-center">
           <p className="mb-2">
-            &copy; {currentYear} MyApp. All rights reserved.
+            &copy; {currentYear} BodyBest Movies. All rights reserved.
           </p>
           <ul className="list-inline">
             <li className="list-inline-item">
