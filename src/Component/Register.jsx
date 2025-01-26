@@ -107,11 +107,9 @@ export default function Register() {
           id="password"
           name="password"
         />
-        <Link to="login">
         <button type="submit" className="btn btn-outline-primary">
           {loading ? <i className="fas fa-spinner fa-spin"></i> : "Register"}
         </button>
-        </Link>
       </form>
     </div>
   );
