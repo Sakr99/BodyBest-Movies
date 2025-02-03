@@ -7,7 +7,7 @@ export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState(null);
   const getMovieDetails = async (id) => {
     let { data } = await axios.get(
-      `https://api.sampleapis.com/movies/drama/${id}`
+      `https://api.tvmaze.com/search/shows?q=girls/${id}`
     );
     setMovieDetails(data);
   };
@@ -20,7 +20,7 @@ export default function MovieDetails() {
         <div className="row m-2 ">
           <div className="col-md-3">
             <div>
-              <img className="w-100 p-2" src={movieDetails.posterURL} alt="" />
+              <img className="w-100 p-2" src="https://as1.ftcdn.net/v2/jpg/00/61/32/90/1000_F_61329058_IAFlLVfW5aalR2scgcvZA8lxUOsAcULl.jpg" alt="" />
             </div>
             <h5>Artest movie :</h5>
             <ul>
@@ -35,7 +35,7 @@ export default function MovieDetails() {
             </ul>
           </div>
           <div className="col-md-9 ">
-            <h1 className="card-title">{movieDetails.title}</h1>
+            <h1 className="card-title">{movieDetails.name}</h1>
             <i className="star-icon fa-solid fa-star d-flex  flex-row-reverse top-0 p-1">
               9.0
             </i>

@@ -12,12 +12,12 @@ function Card({ movie }) {
       <Link to={`/movieDetails/${movie.id}`}>
         <div className="image-container d-flex align-item-center justify-content-center m-3">
           <img
-            src={movie.posterURL}
+            src="https://as1.ftcdn.net/v2/jpg/00/61/32/90/1000_F_61329058_IAFlLVfW5aalR2scgcvZA8lxUOsAcULl.jpg"
             className="card-img-top rounded w-100 "
             alt=""
           />
           <div className="overlay d-flex align-item-center justify-content-center">
-            {movie.title}
+            {movie.show.name}
           </div>
         </div>
       </Link>

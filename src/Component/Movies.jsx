@@ -6,16 +6,16 @@ import Card from "./Card";
 export default function Movies() {
   const [movies, setMovis] = useState([]);
   const [filterMovie, setfilterMovie] = useState([]);
-  const getMovis = async (movieType) => {
+  const getMovis = async () => {
     const dataUrl = await axios.get(
-      `https://api.sampleapis.com/movies/${movieType}`
+      `https://api.tvmaze.com/search/shows?q=girls`
     );
     setMovis((prevState) => [...prevState, ...dataUrl.data]);
-    console.log(dataUrl);
+    console.log(dataUrl.data);
   };
 
   useEffect(() => {
-    getMovis("drama");
+    getMovis();
   }, []);
   useEffect(() => {
     setfilterMovie(movies);
@@ -23,7 +23,7 @@ export default function Movies() {
 
   const handleSearch = (e) => {
     const filter = movies.filter((movie) =>
-      movie.title.toLowerCase().includes(e.target.value)
+      movie.show.name.toLowerCase().includes(e.target.value)
     );
     setfilterMovie(filter);
   };

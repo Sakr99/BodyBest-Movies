@@ -13,7 +13,7 @@ function Favourites() {
           <div className="row row-cols-3 row-cols-sm-4 g-4">
             {MovieContext.favourites.map((movie) => (
               <div
-                key={movie.id}
+                key={movie.show.id}
                 className="card d-flex justify-content-start p-2 "
               >
                 {<MovieFavouriteCard movie={movie} />}
