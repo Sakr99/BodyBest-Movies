@@ -26,10 +26,10 @@ export default function MovieDetails() {
     <>
       {movieDetails ? (
         <div className={`grid grid-cols-1 md:grid-cols-4 gap-6 m-4 ${
-          theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
+          theme === "light" ? " text-black" : "bg-gray-800 "
         }`}>
           {/* Movie Poster & Cast */}
-          <div className="md:col-span-1 bg-gray-100 p-4 rounded-lg shadow-md">
+          <div className="md:col-span-1  p-4 rounded-lg shadow-md">
             <img
               className="w-full rounded-lg"
               src={
@@ -39,7 +39,7 @@ export default function MovieDetails() {
               alt={movieDetails.name}
             />
             <h5 className="text-lg font-semibold mt-4">Cast:</h5>
-            <ul className="list-disc pl-5 text-gray-700">
+            <ul className="list-disc pl-5 ">
               <li>Gorg Washnton</li>
               <li>Van Disil</li>
               <li>Tom Chros</li>
@@ -51,8 +51,7 @@ export default function MovieDetails() {
             </ul>
           </div>
 
-          {/* Movie Details */}
-          <div className="md:col-span-3 bg-white p-6 rounded-lg shadow-md">
+          <div className="md:col-span-3 p-6 rounded-lg shadow-md">
             <h1 className="text-3xl font-bold mb-2">{movieDetails.name}</h1>
             <div className="flex items-center gap-2 text-yellow-500 font-semibold">
               <i className="fa-solid fa-star"></i>
@@ -61,7 +60,7 @@ export default function MovieDetails() {
             <hr className="my-4" />
 
             <h4 className="text-xl font-semibold mb-2">Movie Story:</h4>
-            <p className="text-gray-700">
+            <p>
               {movieDetails.summary?.replace(/<[^>]+>/g, "") ||
                 "No description available."}
             </p>

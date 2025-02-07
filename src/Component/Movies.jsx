@@ -41,9 +41,9 @@ export default function Movies() {
             onInput={handleSearch}
           />
         </form>
-        
+
         {filterMovie.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+          <div className="grid grid-cols-3 lg:gap-4 md:gap-2 mt-4">
             {filterMovie.map((movie, i) => (
               <div key={i} className="p-2">
                 <Card movie={movie} />

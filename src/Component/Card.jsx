@@ -24,21 +24,22 @@ function Card({ movie }) {
         </div>
       </Link>
       <button
-        disabled={FavouritedDisabled}
-        onClick={() =>
-          MovieContext.MoviesDispatch({
-            type: actions.ADD_MOVIE_TO_FAVOURITES,
-            payload: movie,
-          })
-        }
-        type="button"
-        className={`w-full mt-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors duration-300 ${
-          FavouritedDisabled ? "opacity-50 cursor-not-allowed" : ""
-        }`}
-      >
-        Add to Favourites
-        <i className="ml-2 fa-solid fa-heart fa-beat"></i>
-      </button>
+  disabled={FavouritedDisabled}
+  onClick={() =>
+    MovieContext.MoviesDispatch({
+      type: actions.ADD_MOVIE_TO_FAVOURITES,
+      payload: movie,
+    })
+  }
+  type="button"
+  className={`w-full mt-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-sky-700 transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base ${
+    FavouritedDisabled ? "opacity-50 cursor-not-allowed" : ""
+  }`}
+>
+  <span>Add to Favourites</span>
+  <i className="fa-solid fa-heart fa-beat text-lg"></i>
+</button>
+
     </>
   );
 }

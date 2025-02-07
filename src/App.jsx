@@ -7,7 +7,7 @@ import Footer from "./Component/Footer";
 import Notfound from "./Component/Notfound";
 import { Route, Routes } from "react-router-dom";
 import Favourites from "./Component/Favourites";
-import HomeEN from "./Component/HomeEN";
+import Home from "./Component/Home";
 import ContextProvider, {
   ThemeProvider,
 } from "./Component/Context/GlobalContext";
@@ -18,8 +18,8 @@ const App = () => {
         <ThemeProvider>
           <Navbar />
           <Routes>
-            <Route path="/" element={<HomeEN />} />
-            <Route path="home" element={<HomeEN />} />
+            <Route path="/" element={<Home/>} />
+            <Route path="home" element={<Home/>} />
             <Route path="movies" element={<Movies />} />
             <Route path="favourites" element={<Favourites />} />
             <Route path="movieDetails" element={<MovieDetails />}>
