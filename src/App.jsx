@@ -8,7 +8,6 @@ import Notfound from "./Component/Notfound";
 import { Route, Routes } from "react-router-dom";
 import Favourites from "./Component/Favourites";
 import HomeEN from "./Component/HomeEN";
-import HomeAR from "./Component/HomeAR";
 import ContextProvider, {
   ThemeProvider,
 } from "./Component/Context/GlobalContext";
@@ -21,7 +20,6 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomeEN />} />
             <Route path="home" element={<HomeEN />} />
-            <Route path="home-ar" element={<HomeAR />} />
             <Route path="movies" element={<Movies />} />
             <Route path="favourites" element={<Favourites />} />
             <Route path="movieDetails" element={<MovieDetails />}>

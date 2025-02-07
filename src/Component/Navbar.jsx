@@ -1,98 +1,55 @@
 import { Link } from "react-router-dom";
 import Icon from "./Icon";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "./Context/GlobalContext";
+
 export default function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
-  return (
-    <>
-      <nav
-        className={`navbar navbar-expand-lg navbar-${theme} text-${theme} bg-${theme}`}
-      >
-        <div className="container-fluid">
-          <Link className="navbar-brand" to="home">
-            BodyBest
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link className="nav-link" to="home">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="movies">
-                  Movies
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="favourites">
-                  Favourites
-                </Link>
-              </li>
-              <button
-                className="changeColor btn btn-secondary rounded-circle mx-auto"
-                onClick={toggleTheme}
-              >
-                {theme === "light" ? (
-                  <i className="fa-solid fa-moon"></i>
-                ) : (
-                  <i className="fa-regular fa-moon"></i>
-                )}
-              </button>
-            </ul>
-            <ul className="navbar-nav mb-lg-0">
-              <div className="btn-group dropstart">
-                <button
-                  type="button"
-                  className="btn btn-secondary dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i className="fa fa-language " aria-hidden="true"></i>
-                </button>
-                <ul className="dropdown-menu mx-auto">
-                  <li>
-                    <Link className="dropdown-item" to="home-ar">
-                      Arabic
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="home-en">
-                      English
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
-              <Icon />
-              <li className="nav-item">
-                <Link className="nav-link" to="login">
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="register">
-                  Register
-                </Link>
-              </li>
-              <span className="nav-link">Logout</span>
-            </ul>
+  return (
+    <nav
+      className="flex flex-wrap items-center justify-between p-4 bg-white text-black dark:bg-gray-800 dark:text-white"
+    >
+      <div className="container mx-auto flex flex-wrap items-center justify-between">
+        <Link className="text-2xl font-bold" to="home">
+          BodyBest
+        </Link>
+
+        <div className="hidden lg:flex space-x-4">
+          <Link className="hover:text-gray-400 dark:hover:text-gray-300" to="home">Home</Link>
+          <Link className="hover:text-gray-400 dark:hover:text-gray-300" to="movies">Movies</Link>
+          <Link className="hover:text-gray-400 dark:hover:text-gray-300" to="favourites">Favourites</Link>
+        </div>
+
+        <div className="flex items-center space-x-4">
+          <button
+            className="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
+            onClick={toggleTheme}
+          >
+            {theme === "light" ? (
+              <i className="fa-solid fa-moon"></i>
+            ) : (
+              <i className="fa-regular fa-moon"></i>
+            )}
+          </button>
+
+    
+
+          <div className="hidden lg:flex space-x-4">
+            <Icon />
+            <Link className="hover:text-gray-400 dark:hover:text-gray-300" to="login">Login</Link>
+            <Link className="hover:text-gray-400 dark:hover:text-gray-300" to="register">Register</Link>
           </div>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 }

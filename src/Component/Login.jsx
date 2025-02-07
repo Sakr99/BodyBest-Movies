@@ -1,16 +1,17 @@
 import Joi from "joi";
-import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [errorValidation, setErrorValidation] = useState([]);
-  const [loding, setLoding] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-  function validatLoginForm() {
+
+  function validateLoginForm() {
     let schema = Joi.object({
       email: Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ["com"] } })
@@ -25,67 +26,63 @@ export default function Login() {
   }
 
   const getUserData = (e) => {
-    let myUser = { ...user };
-    myUser[e.target.name] = e.target.value;
-    setUser(myUser);
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
+
   async function submitData(e) {
     e.preventDefault();
-    setLoding(true);
-    let validatForm = validatLoginForm();
-    if (validatForm.error) {
-      setErrorValidation(validatForm.error.details);
-      setLoding(false);
+    setLoading(true);
+    let validation = validateLoginForm();
+    if (validation.error) {
+      setErrorValidation(validation.error.details);
+      setLoading(false);
     } else {
-      <div>Login It Was Wompleted</div>;
-      setLoding(false);
+      console.log("Login Completed");
+      setLoading(false);
+      navigate("/"); // توجيه المستخدم بعد تسجيل الدخول
     }
-    console.log(validatForm);
   }
+
   return (
-    <>
-      {" "}
-      <div className="w-50 mx-auto p-2 m-5">
-        <h1>Login Now</h1>
-        {errorValidation.map((error, i) =>
-          i === 1 ? (
-            <div key={i} className="alert py-2 alert-danger">
-              {error.message}
-            </div>
-          ) : (
-            <div key={i} className="alert py-2 alert-danger">
-              Password Invalid
-            </div>
-          )
-        )}
-        <form onSubmit={submitData}>
-          <label type="email" htmlFor="email">
-            Email :
-          </label>
+    <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md mt-10">
+      <h1 className="text-xl font-bold mb-4 text-center">Login Now</h1>
+      
+      {errorValidation.map((error, i) => (
+        <div key={i} className="bg-red-100 text-red-700 p-2 rounded mb-2">
+          {i === 1 ? error.message : "Password Invalid"}
+        </div>
+      ))}
+
+      <form onSubmit={submitData} className="space-y-4">
+        <div>
+          <label htmlFor="email" className="block font-medium">Email:</label>
           <input
             onChange={getUserData}
-            className="form-control mb-2"
+            type="email"
+            className="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300"
             id="email"
             name="email"
           />
-          <label htmlFor="password">password :</label>
+        </div>
+
+        <div>
+          <label htmlFor="password" className="block font-medium">Password:</label>
           <input
             onChange={getUserData}
             type="password"
-            className="form-control mb-2"
+            className="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300"
             id="password"
             name="password"
           />
+        </div>
 
-          <Link to="/" className="btn btn-outline-primary">
-            {loding === true ? (
-              <i className="fas fa-spinner fa-spin"></i>
-            ) : (
-              "Login"
-            )}
-          </Link>
-        </form>
-      </div>
-    </>
+        <button 
+          type="submit" 
+          className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+        >
+          {loading ? <i className="fas fa-spinner fa-spin"></i> : "Login"}
+        </button>
+      </form>
+    </div>
   );
 }

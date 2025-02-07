@@ -1,23 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=Cairo:wght@200..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root{
-    --bg-main: #131722;
-    --light-bg:#24daef;
-}
-a, a:hover {
-color: #fff;
-    text-decoration: none;
-}
 body {
-font-family: "Montserrat", sans-serif !important;
-}
-
-
-input{
-    background-color: rgb(75, 75, 75) !important;
-    color: var(--main-color) !important;
-}
+    @apply font-[Montserrat] bg-white text-black dark:bg-gray-800 dark:text-white;
+  }
+  
+  a, a:hover {
+    @apply text-inherit no-underline;
+  }
+  
+  input {
+    @apply bg-gray-700 text-white;
+  }
 
 
 

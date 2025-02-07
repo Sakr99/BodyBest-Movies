@@ -3,19 +3,25 @@ import { Link } from "react-router-dom";
 
 function MovieFavouriteCard({ movie }) {
   return (
-    <Link to={`/movieDetails/${movie.show.id}`}>
-      <div className="image-container d-flex align-item-center justify-content-center">
+    <Link to={`/movieDetails/${movie.show.id}`} className="block">
+      <div className="relative flex items-center justify-center p-3">
         {movie ? (
           <img
-          src="https://as1.ftcdn.net/v2/jpg/00/61/32/90/1000_F_61329058_IAFlLVfW5aalR2scgcvZA8lxUOsAcULl.jpg"
-          className="rounded w-100 "
+            src={
+              movie.show.image?.medium ||
+              "https://via.placeholder.com/210x295?text=No+Image"
+            }
+            className="rounded-lg shadow-md w-full"
             alt={movie.show.name}
           />
         ) : (
-          <div></div>
+          <div className="w-full h-64 bg-gray-300 flex items-center justify-center rounded-lg">
+            <span className="text-gray-500">No Image Available</span>
+          </div>
         )}
       </div>
     </Link>
   );
 }
+
 export default MovieFavouriteCard;

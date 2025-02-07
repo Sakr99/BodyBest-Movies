@@ -1,32 +1,48 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useContext} from "react";
 import { useParams } from "react-router-dom";
 import Video from "../assets/modern-video-player-design-template-260nw-762468289.webp";
+import { ThemeContext } from "./Context/GlobalContext";
+
 export default function MovieDetails() {
-  let params = useParams();
+  let { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const getMovieDetails = async (id) => {
-    let { data } = await axios.get(
-      `https://api.tvmaze.com/search/shows?q=girls/${id}`
-    );
-    setMovieDetails(data);
+  const { theme } = useContext(ThemeContext);
+
+  const getMovieDetails = async () => {
+    try {
+      let { data } = await axios.get(`https://api.tvmaze.com/shows/${id}`);
+      setMovieDetails(data);
+    } catch (error) {
+      console.error("Error fetching movie details:", error);
+    }
   };
+
   useEffect(() => {
-    getMovieDetails(params.id);
-  });
+    getMovieDetails();
+  }, []);
+
   return (
     <>
       {movieDetails ? (
-        <div className="row m-2 ">
-          <div className="col-md-3">
-            <div>
-              <img className="w-100 p-2" src="https://as1.ftcdn.net/v2/jpg/00/61/32/90/1000_F_61329058_IAFlLVfW5aalR2scgcvZA8lxUOsAcULl.jpg" alt="" />
-            </div>
-            <h5>Artest movie :</h5>
-            <ul>
-              <li>Gorg Washnton </li>
+        <div className={`grid grid-cols-1 md:grid-cols-4 gap-6 m-4 ${
+          theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
+        }`}>
+          {/* Movie Poster & Cast */}
+          <div className="md:col-span-1 bg-gray-100 p-4 rounded-lg shadow-md">
+            <img
+              className="w-full rounded-lg"
+              src={
+                movieDetails.image?.original ||
+                "https://via.placeholder.com/300x450"
+              }
+              alt={movieDetails.name}
+            />
+            <h5 className="text-lg font-semibold mt-4">Cast:</h5>
+            <ul className="list-disc pl-5 text-gray-700">
+              <li>Gorg Washnton</li>
               <li>Van Disil</li>
-              <li>Tom Chros </li>
+              <li>Tom Chros</li>
               <li>Ahmed Helme</li>
               <li>Mohamed Ramadan</li>
               <li>Will Thmes</li>
@@ -34,34 +50,42 @@ export default function MovieDetails() {
               <li>Hend Sabry</li>
             </ul>
           </div>
-          <div className="col-md-9 ">
-            <h1 className="card-title">{movieDetails.name}</h1>
-            <i className="star-icon fa-solid fa-star d-flex  flex-row-reverse top-0 p-1">
-              9.0
-            </i>
-            <hr />
-            <h4>Movie Story :</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-              quasi suscipit quod ipsa placeat assumenda, iusto neque
-              exercitationem quae amet nulla quia illo veritatis doloribus!
-              Nihil vero neque doloribus sapiente!
+
+          {/* Movie Details */}
+          <div className="md:col-span-3 bg-white p-6 rounded-lg shadow-md">
+            <h1 className="text-3xl font-bold mb-2">{movieDetails.name}</h1>
+            <div className="flex items-center gap-2 text-yellow-500 font-semibold">
+              <i className="fa-solid fa-star"></i>
+              {movieDetails.rating?.average || "N/A"}
+            </div>
+            <hr className="my-4" />
+
+            <h4 className="text-xl font-semibold mb-2">Movie Story:</h4>
+            <p className="text-gray-700">
+              {movieDetails.summary?.replace(/<[^>]+>/g, "") ||
+                "No description available."}
             </p>
-            <h4>Watch the trailer :</h4>
-            <img src={Video} className="img-fluid w-100" alt="trailer" />
-            <button type="button" className="btn btn-outline-success p-2 m-2">
-              Download
-            </button>
-            <button type="button" className="btn btn-outline-warning p-2 m-2">
-              Watched
-            </button>
+
+            <h4 className="text-xl font-semibold mt-6">Watch the trailer:</h4>
+            <img
+              src={Video}
+              className="w-full rounded-lg shadow-md my-3"
+              alt="trailer"
+            />
+
+            <div className="flex gap-4 mt-4">
+              <button className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition">
+                Download
+              </button>
+              <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition">
+                Watched
+              </button>
+            </div>
           </div>
         </div>
       ) : (
-        <div class="text-center">
-          <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+        <div className="flex justify-center items-center h-screen">
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
         </div>
       )}
     </>

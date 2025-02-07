@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useMovieContext } from "./Context/GlobalContext";
 import * as actions from "./Context/ActionTypes";
+
 function Card({ movie }) {
   const MovieContext = useMovieContext();
   const storedMovie = MovieContext.favourites.find((mo) => mo.id === movie.id);
@@ -10,14 +11,15 @@ function Card({ movie }) {
   return (
     <>
       <Link to={`/movieDetails/${movie.id}`}>
-        <div className="image-container d-flex align-item-center justify-content-center m-3">
+        <div className="relative flex items-center justify-center m-3 overflow-hidden group">
           <img
-            src="https://as1.ftcdn.net/v2/jpg/00/61/32/90/1000_F_61329058_IAFlLVfW5aalR2scgcvZA8lxUOsAcULl.jpg"
-            className="card-img-top rounded w-100 "
-            alt=""
+        src={movie.show.image?.original ||
+          "https://via.placeholder.com/300x450"}
+            className="w-auto rounded-lg transition-transform duration-300 group-hover:scale-105"
+            alt={movie.show.name}
           />
-          <div className="overlay d-flex align-item-center justify-content-center">
-            {movie.show.name}
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p className="text-white text-lg font-semibold">{movie.show.name}</p>
           </div>
         </div>
       </Link>
@@ -30,10 +32,12 @@ function Card({ movie }) {
           })
         }
         type="button"
-        className="btn btn-dark  "
+        className={`w-full mt-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors duration-300 ${
+          FavouritedDisabled ? "opacity-50 cursor-not-allowed" : ""
+        }`}
       >
         Add to Favourites
-        <i className="iconFav fa-solid fa-heart fa-beat"></i>
+        <i className="ml-2 fa-solid fa-heart fa-beat"></i>
       </button>
     </>
   );

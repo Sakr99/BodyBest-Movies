@@ -4,61 +4,48 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <>
-      <footer className="position-relative bg-secondary text-dark bottom-0 start-50 translate-middle-x p-5 ">
-        <div className="container text-center">
-          <p className="mb-2">
-            &copy; {currentYear} BodyBest Movies. All rights reserved.
-          </p>
-          <ul className="list-inline">
-            <li className="list-inline-item">
-              <a href="anything" className="text-light text-decoration-none">
-                Privacy Policy
-              </a>
-            </li>
-            <li className="list-inline-item mx-2">|</li>
-            <li className="list-inline-item">
-              <a href="anything" className="text-light text-decoration-none">
-                Terms of Service
-              </a>
-            </li>
-            <li className="list-inline-item mx-2">|</li>
-            <li className="list-inline-item">
-              <a href="anything" className="text-light text-decoration-none">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-          <div className="mt-3">
-            <a href="anything" className="text-light me-3">
-              <i className="bi bi-facebook"></i>
+    <footer className="bg-gray-200 text-gray-800 p-5 text-center">
+      <div className="max-w-7xl mx-auto">
+        <p className="mb-2">&copy; {currentYear} BodyBest Movies. All rights reserved.</p>
+
+        <ul className="flex justify-center space-x-4">
+          <li>
+            <a href="anything" className="text-gray-700 hover:text-gray-900">
+              Privacy Policy
             </a>
-            <a href="anything" className="text-light me-3">
-              <i className="bi bi-twitter"></i>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="anything" className="text-gray-700 hover:text-gray-900">
+              Terms of Service
             </a>
-            <a href="anything" className="text-light">
-              <i className="bi bi-instagram"></i>
+          </li>
+          <li>|</li>
+          <li>
+            <a href="anything" className="text-gray-700 hover:text-gray-900">
+              Contact Us
             </a>
-          </div>
+          </li>
+        </ul>
+
+        <div className="mt-3 flex justify-center space-x-4">
+          <a href="https://www.facebook.com/" className="text-gray-600 hover:text-gray-900">
+            <i className="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/" className="text-gray-600 hover:text-gray-900">
+            <i className="fab fa-instagram"></i>
+          </a>
+          <a href="https://tiktok.com/" className="text-gray-600 hover:text-gray-900">
+            <i className="fab fa-tiktok"></i>
+          </a>
+          <a href="https://x.com/" className="text-gray-600 hover:text-gray-900">
+            <i className="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://whatsapp.com/" className="text-gray-600 hover:text-gray-900">
+            <i className="fab fa-whatsapp"></i>
+          </a>
         </div>
-        <li className="d-flex  align-items-center justify-content-center">
-          <a href="https://www.facebook.com/">
-            <i className="fab mx-2 fa-facebook"></i>
-          </a>
-          <a href="https://www.instagram.com/">
-            <i className="fab mx-2 fa-instagram"></i>
-          </a>
-          <a href="https://tiktok.com/">
-            <i className="fab mx-2 fa-tiktok"></i>
-          </a>
-          <a href="https://x.com/">
-            <i className="fab mx-2 fa-x-twitter"></i>
-          </a>
-          <a href="https://whatsapp.com/">
-            <i className="fa-brands fa-whatsapp"></i>
-          </a>
-        </li>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 }

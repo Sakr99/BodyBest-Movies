@@ -1,7 +1,6 @@
 import Joi from "joi";
 import React, { useState } from "react";
 
-
 export default function Register() {
   const [errorValidation, setErrorValidation] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -55,58 +54,78 @@ export default function Register() {
   }
 
   return (
-    <div className="w-75 mx-auto p-2 m-5">
-      <h1>Register Now</h1>
+    <div className="w-full max-w-md mx-auto p-4 mt-10 bg-white rounded-lg shadow-lg">
+      <h1 className="text-2xl font-bold mb-4 text-center">Register Now</h1>
       {successMessage && (
-        <div className="alert py-2 alert-success">{successMessage}</div>
+        <div className="mb-4 text-green-500 bg-green-100 p-2 rounded-md">
+          {successMessage}
+        </div>
       )}
       {errorValidation.map((error, i) => (
-        <div key={i} className="alert py-2 alert-danger">
+        <div key={i} className="mb-4 text-red-500 bg-red-100 p-2 rounded-md">
           {error.message}
         </div>
       ))}
       <form onSubmit={submitData}>
-        <label htmlFor="first_name">First Name:</label>
+        <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
+          First Name:
+        </label>
         <input
           onChange={getUserData}
           type="text"
-          className="form-control mb-2"
+          className="w-full p-2 mb-4 border border-gray-300 rounded-md"
           id="first_name"
           name="first_name"
         />
-        <label htmlFor="last_name">Last Name:</label>
+        
+        <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">
+          Last Name:
+        </label>
         <input
           onChange={getUserData}
           type="text"
-          className="form-control mb-2"
+          className="w-full p-2 mb-4 border border-gray-300 rounded-md"
           id="last_name"
           name="last_name"
         />
-        <label htmlFor="age">Age:</label>
+        
+        <label htmlFor="age" className="block text-sm font-medium text-gray-700">
+          Age:
+        </label>
         <input
           onChange={getUserData}
           type="number"
-          className="form-control mb-2"
+          className="w-full p-2 mb-4 border border-gray-300 rounded-md"
           id="age"
           name="age"
         />
-        <label htmlFor="email">Email:</label>
+        
+        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          Email:
+        </label>
         <input
           onChange={getUserData}
           type="email"
-          className="form-control mb-2"
+          className="w-full p-2 mb-4 border border-gray-300 rounded-md"
           id="email"
           name="email"
         />
-        <label htmlFor="password">Password:</label>
+        
+        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          Password:
+        </label>
         <input
           onChange={getUserData}
           type="password"
-          className="form-control mb-2"
+          className="w-full p-2 mb-4 border border-gray-300 rounded-md"
           id="password"
           name="password"
         />
-        <button type="submit" className="btn btn-outline-primary">
+        
+        <button
+          type="submit"
+          className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none"
+        >
           {loading ? <i className="fas fa-spinner fa-spin"></i> : "Register"}
         </button>
       </form>
