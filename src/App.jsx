@@ -1,7 +1,7 @@
 import Navbar from "./Component/Navbar";
 import Movies from "./Component/Movies";
 import MovieDetails from "./Component/MovieDetails";
-import Register from "./Component/Register";
+import SignIn from "./Component/SignIn";
 import Login from "./Component/Login";
 import Footer from "./Component/Footer";
 import Notfound from "./Component/Notfound";
@@ -18,15 +18,15 @@ const App = () => {
         <ThemeProvider>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="home" element={<Home/>} />
+            <Route path="/" element={<Home />} />
+            <Route path="home" element={<Home />} />
             <Route path="movies" element={<Movies />} />
             <Route path="favourites" element={<Favourites />} />
             <Route path="movieDetails" element={<MovieDetails />}>
               <Route path=":id" element={<MovieDetails />} />
             </Route>
             <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
+            <Route path="signIn" element={<SignIn />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
           <Footer />

@@ -1,7 +1,7 @@
 import Joi from "joi";
 import React, { useState } from "react";
 
-export default function Register() {
+export default function SignIn() {
   const [errorValidation, setErrorValidation] = useState([]);
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -54,8 +54,8 @@ export default function Register() {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto p-4 mt-10 bg-white rounded-lg shadow-lg">
-      <h1 className="text-2xl font-bold mb-4 text-center">Register Now</h1>
+    <div className="w-full max-w-md mx-auto p-4 mt-10 rounded-lg shadow-2xl">
+      <h1 className="text-2xl font-bold mb-4 text-center">Sign in</h1>
       {successMessage && (
         <div className="mb-4 text-green-500 bg-green-100 p-2 rounded-md">
           {successMessage}
@@ -67,7 +67,10 @@ export default function Register() {
         </div>
       ))}
       <form onSubmit={submitData}>
-        <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="first_name"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+        >
           First Name:
         </label>
         <input
@@ -77,8 +80,11 @@ export default function Register() {
           id="first_name"
           name="first_name"
         />
-        
-        <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">
+
+        <label
+          htmlFor="last_name"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+        >
           Last Name:
         </label>
         <input
@@ -88,8 +94,11 @@ export default function Register() {
           id="last_name"
           name="last_name"
         />
-        
-        <label htmlFor="age" className="block text-sm font-medium text-gray-700">
+
+        <label
+          htmlFor="age"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+        >
           Age:
         </label>
         <input
@@ -99,8 +108,11 @@ export default function Register() {
           id="age"
           name="age"
         />
-        
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+        >
           Email:
         </label>
         <input
@@ -110,8 +122,11 @@ export default function Register() {
           id="email"
           name="email"
         />
-        
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+
+        <label
+          htmlFor="password"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-50"
+        >
           Password:
         </label>
         <input
@@ -121,12 +136,12 @@ export default function Register() {
           id="password"
           name="password"
         />
-        
+
         <button
           type="submit"
           className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none"
         >
-          {loading ? <i className="fas fa-spinner fa-spin"></i> : "Register"}
+          {loading ? <i className="fas fa-spinner fa-spin"></i> : "Sign in"}
         </button>
       </form>
     </div>

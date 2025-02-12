@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <div className={`max-w-7xl mx-auto px-4 py-5 ${theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"}`}>
       <section className="text-center">
-        <h1 className="border border-gray-800 p-3 rounded-lg text-5xl font-bold">
+        <h1 className="border border-gray-800 dark:border-gray-50 p-3 rounded-lg text-5xl font-bold">
           BodyBest Movies
         </h1>
         <hr className="my-4 border-gray-300" />
