@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "./Context/GlobalContext";
-
+import logo from "../assets/4d3d246bcbf144faa10a2806021391bc-free.png"
 export default function Navbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +19,8 @@ export default function Navbar() {
     <nav className="flex flex-wrap items-center justify-between p-4 bg-white text-black dark:bg-gray-800 dark:text-white">
       <div className="container mx-auto flex flex-wrap items-center justify-between">
         {/* Logo */}
-        <Link className="text-2xl font-bold" to="home">
+        <Link className="text-2xl font-bold flex items-center gap-4" to="home">
+        <img className="w-16" src={logo} alt="BodyBestLogo" />
           BodyBest
         </Link>
 
