@@ -16,7 +16,7 @@ function Favourites() {
           {MovieContext.favourites.map((movie) => (
             <div
               key={movie.show.id}
-              className="bg-white shadow-md rounded-lg p-4 flex flex-col"
+              className=" shadow-md rounded-lg p-4 flex flex-col"
             >
               <MovieFavouriteCard movie={movie} />
 
