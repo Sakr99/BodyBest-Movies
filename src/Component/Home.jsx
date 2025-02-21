@@ -10,7 +10,7 @@ export default function Home() {
     const fetchMovies = async () => {
       try {
         const response = await axios.get("https://api.tvmaze.com/shows");
-        setMovies(response.data.slice(0, 32));
+        setMovies(response.data.slice(0, 30)); 
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
