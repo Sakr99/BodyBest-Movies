@@ -22,16 +22,13 @@ function Card({ movie }) {
       <Link to={`/movieDetails/${movie.id}`}>
         <div className="relative flex items-center justify-center m-3 overflow-hidden group">
           <img
-            src={
-              movie.show.image?.original ||
-              "https://via.placeholder.com/300x450"
-            }
+            src={movie.image?.original || "https://via.placeholder.com/300x450"}
             className="w-auto rounded-lg transition-transform duration-300 group-hover:scale-105"
-            alt={movie.show.name}
+            alt={movie.name}
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <p className="text-white text-lg font-semibold">
-              {movie.show.name}
+          <div className="absolute w-full inset-x-0 bottom-0 h-1/4 rounded-lg bg-black bg-opacity-80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition">
+            <p className="text-yellow-200 text-xs font-bold md:text-3xl">
+              {movie.name}
             </p>
           </div>
         </div>

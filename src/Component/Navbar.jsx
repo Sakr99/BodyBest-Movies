@@ -88,7 +88,7 @@ export default function Navbar() {
             className="hover:text-gray-400 dark:hover:text-gray-300"
             to="favourites"
           >
-            Favourites
+            My Favourites
           </Link>
         </div>
 

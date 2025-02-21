@@ -8,9 +8,7 @@ export default function Home() {
   const { theme } = useContext(ThemeContext);
 
   const getMovies = async () => {
-    const dataUrl = await axios.get(
-      `https://api.tvmaze.com/search/shows?q=girls`
-    );
+    const dataUrl = await axios.get(`https://api.tvmaze.com/shows`);
     setMovies((prevState) => [...prevState, ...dataUrl.data]);
   };
 
@@ -36,7 +34,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={`max-w-7xl mx-auto px-4 py-5 ${theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"}`}>
+    <div
+      className={`max-w-7xl mx-auto px-4 py-5 ${
+        theme === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
+      }`}
+    >
       <section className="text-center">
         <h1 className="border border-gray-800 dark:border-gray-50 p-3 rounded-lg text-5xl font-bold">
           BodyBest Movies
@@ -53,7 +55,7 @@ export default function Home() {
             ))}
           </div>
 
-         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
             {images.map((_, index) => (
               <button
                 key={index}
@@ -67,18 +69,23 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="grid grid-cols-3 lg:gap-4 md:gap-2 mt-6">
+      <div className="grid grid-cols-3  lg:gap-4 lg:grid-cols-4 md:gap-2 mt-6">
         {movies.map((movie, i) => (
           <div key={i} className="flex justify-start">
-            <Link to={`/movieDetails/${movie.show.id}`}>
-              <div className="relative group m-3">
+            <Link to={`/movieDetails/${movie.id}`}>
+              <div className="relative group m-3 active:scale-105 transition-transform duration-300">
                 <img
-                  src={movie.show.image?.original || "https://via.placeholder.com/300x450"}
-                  className="rounded-lg w-full object-cover"
+                  src={
+                    movie.image?.original ||
+                    "https://via.placeholder.com/300x450"
+                  }
+                  className="rounded-lg w-full object-fill transform group-hover:scale-105 transition-transform duration-300"
                   alt="Poster Movie"
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                  <p className="text-white font-bold">{movie.show.name}</p>
+                <div className="absolute w-full inset-x-0 bottom-0 h-1/4 rounded-lg bg-black bg-opacity-80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                  <p className="text-yellow-200 text-xs font-bold md:text-3xl">
+                    {movie.name}
+                  </p>
                 </div>
               </div>
             </Link>

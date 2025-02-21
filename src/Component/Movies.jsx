@@ -3,19 +3,19 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 
 export default function Movies() {
-  const [movies, setMovis] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [filterMovie, setfilterMovie] = useState([]);
-  
-  const getMovis = async () => {
-    const dataUrl = await axios.get(
-      `https://api.tvmaze.com/search/shows?q=girls`
-    );
-    setMovis((prevState) => [...prevState, ...dataUrl.data]);
-    console.log(dataUrl.data);
-  };
-
   useEffect(() => {
-    getMovis();
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get("https://api.tvmaze.com/shows");
+        setMovies(response.data.slice(0, 30)); 
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+
+    fetchMovies();
   }, []);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Movies() {
 
   const handleSearch = (e) => {
     const filter = movies.filter((movie) =>
-      movie.show.name.toLowerCase().includes(e.target.value)
+      movie.name.toLowerCase().includes(e.target.value)
     );
     setfilterMovie(filter);
   };

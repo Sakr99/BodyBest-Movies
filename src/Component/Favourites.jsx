@@ -15,11 +15,15 @@ function Favourites() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {MovieContext.favourites.map((movie) => (
             <div
-              key={movie.show.id}
+              key={movie.id}
               className=" shadow-md rounded-lg p-4 flex flex-col"
             >
               <MovieFavouriteCard movie={movie} />
-
+              <div className=" w-full inset-x-0 bottom-0 h-1/4 rounded-lg p-2 bg-black flex flex-col items-center justify-center">
+                <p className="text-yellow-200 text-xs font-bold md:text-3xl">
+                  {movie.name}
+                </p>
+              </div>
               <button
                 onClick={() =>
                   MovieContext.MoviesDispatch({

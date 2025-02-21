@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 
 function MovieFavouriteCard({ movie }) {
   return (
-    <Link to={`/movieDetails/${movie.show.id}`} className="block">
+    <Link to={`/movieDetails/${movie.id}`} className="block">
       <div className="relative flex items-center justify-center p-3">
         {movie ? (
           <img
             src={
-              movie.show.image?.medium ||
+              movie.image?.medium ||
               "https://via.placeholder.com/210x295?text=No+Image"
             }
             className="rounded-lg shadow-md w-full"
-            alt={movie.show.name}
+            alt={movie.name}
           />
         ) : (
           <div className="w-full h-64 bg-gray-300 flex items-center justify-center rounded-lg">

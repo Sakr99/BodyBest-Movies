@@ -25,9 +25,11 @@ export default function MovieDetails() {
   return (
     <>
       {movieDetails ? (
-        <div className={`grid grid-cols-1 md:grid-cols-4 gap-6 m-4 ${
-          theme === "light" ? " text-black" : "bg-gray-800 "
-        }`}>
+        <div
+          className={`grid grid-cols-1 md:grid-cols-4 gap-6 m-4 ${
+            theme === "light" ? " text-black" : "bg-gray-800 "
+          }`}
+        >
           {/* Movie Poster & Cast */}
           <div className="md:col-span-1  p-4 rounded-lg shadow-md">
             <img
@@ -38,6 +40,19 @@ export default function MovieDetails() {
               }
               alt={movieDetails.name}
             />
+          </div>
+
+          <div className="md:col-span-3 p-6 rounded-lg shadow-md">
+            <h1 className="text-3xl font-bold mb-2">{movieDetails.name}</h1>
+            <div className="flex items-center gap-2 text-yellow-500 font-semibold">
+              <i className="fa-solid fa-star"></i>
+              {movieDetails.rating?.average || "N/A"}
+            </div>
+            <hr className="my-4" />
+            <p>
+              {movieDetails.summary?.replace(/<[^>]+>/g, "") ||
+                "No description available."}
+            </p>
             <h5 className="text-lg font-semibold mt-4">Cast:</h5>
             <ul className="list-disc pl-5 ">
               <li>Gorg Washnton</li>
@@ -49,21 +64,8 @@ export default function MovieDetails() {
               <li>Adel Emam</li>
               <li>Hend Sabry</li>
             </ul>
-          </div>
 
-          <div className="md:col-span-3 p-6 rounded-lg shadow-md">
-            <h1 className="text-3xl font-bold mb-2">{movieDetails.name}</h1>
-            <div className="flex items-center gap-2 text-yellow-500 font-semibold">
-              <i className="fa-solid fa-star"></i>
-              {movieDetails.rating?.average || "N/A"}
-            </div>
-            <hr className="my-4" />
-
-            <h4 className="text-xl font-semibold mb-2">Movie Story:</h4>
-            <p>
-              {movieDetails.summary?.replace(/<[^>]+>/g, "") ||
-                "No description available."}
-            </p>
+            <h4 className="text-xl mt-2 font-semibold mb-2">Movie Story:</h4>
 
             <h4 className="text-xl font-semibold mt-6">Watch the trailer:</h4>
             <img
