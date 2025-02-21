@@ -6,14 +6,17 @@ import { ThemeContext } from "./Context/GlobalContext";
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const { theme } = useContext(ThemeContext);
-
-  const getMovies = async () => {
-    const dataUrl = await axios.get(`https://api.tvmaze.com/shows`);
-    setMovies((prevState) => [...prevState, ...dataUrl.data]);
-  };
-
   useEffect(() => {
-    getMovies();
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get("https://api.tvmaze.com/shows");
+        setMovies(response.data.slice(0, 32));
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      }
+    };
+
+    fetchMovies();
   }, []);
 
   const images = [
