@@ -79,8 +79,8 @@ export default function Home() {
               <div className="relative group m-3 h-fit active:scale-105 transition-transform duration-300">
                 <img
                   src={
-                    movie.image?.original ||
-                    "https://via.placeholder.com/300x450"
+                    movie.image?.medium ||
+                    "https://via.placeholder.com/210x295?text=No+Image"
                   }
                   className="rounded-lg w-full object-fill transform group-hover:scale-105 transition-transform duration-300"
                   alt="Poster Movie"

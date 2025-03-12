@@ -22,7 +22,10 @@ function Card({ movie }) {
       <Link to={`/movieDetails/${movie.id}`}>
         <div className="relative flex items-center object-center h-fit justify-center m-3 overflow-hidden group">
           <img
-            src={movie.image.original}
+            src={
+              movie.image?.medium ||
+              "https://via.placeholder.com/210x295?text=No+Image"
+            }
             className="w-full h-full rounded-lg  transition-transform duration-300 group-hover:scale-105"
             alt={movie.name}
           />
