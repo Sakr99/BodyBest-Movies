@@ -20,10 +20,10 @@ function Card({ movie }) {
   return (
     <>
       <Link to={`/movieDetails/${movie.id}`}>
-        <div className="relative flex items-center justify-center m-3 overflow-hidden group">
+        <div className="relative flex items-center object-center h-fit justify-center m-3 overflow-hidden group">
           <img
-            src={movie.image?.original || "https://via.placeholder.com/300x450"}
-            className="w-auto rounded-lg transition-transform duration-300 group-hover:scale-105"
+            src={movie.image.original}
+            className="w-full h-full rounded-lg  transition-transform duration-300 group-hover:scale-105"
             alt={movie.name}
           />
           <div className="absolute w-full inset-x-0 bottom-0 h-1/4 rounded-lg bg-black bg-opacity-80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition">
@@ -37,7 +37,7 @@ function Card({ movie }) {
         disabled={isDisabled}
         onClick={addToFavourites}
         type="button"
-        className={`w-full mt-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-sky-700 transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base ${
+        className={`w-full  mt-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-500 transition-all duration-300 flex items-center justify-center gap-2 text-sm md:text-base ${
           isDisabled ? "opacity-50 cursor-not-allowed" : ""
         }`}
       >

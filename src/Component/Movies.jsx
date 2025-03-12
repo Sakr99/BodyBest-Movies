@@ -43,7 +43,7 @@ export default function Movies() {
         </form>
 
         {filterMovie.length > 0 && (
-          <div className="grid grid-cols-3 lg:gap-4 md:gap-2 mt-4">
+          <div className="grid lg:grid-cols-4 grid-cols-2 lg:gap-4 md:gap-2  mt-4">
             {filterMovie.map((movie, i) => (
               <div key={i} className="p-2">
                 <Card movie={movie} />

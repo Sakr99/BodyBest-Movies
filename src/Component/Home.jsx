@@ -10,7 +10,7 @@ export default function Home() {
     const fetchMovies = async () => {
       try {
         const response = await axios.get("https://api.tvmaze.com/shows");
-        setMovies(response.data.slice(0, 30)); 
+        setMovies(response.data.slice(0, 30));
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
@@ -72,11 +72,11 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="grid grid-cols-3  lg:gap-4 lg:grid-cols-4 md:gap-2 mt-6">
+      <div className="grid grid-cols-2  lg:gap-4 lg:grid-cols-4 md:gap-2 mt-6">
         {movies.map((movie, i) => (
           <div key={i} className="flex justify-start">
             <Link to={`/movieDetails/${movie.id}`}>
-              <div className="relative group m-3 active:scale-105 transition-transform duration-300">
+              <div className="relative group m-3 h-fit active:scale-105 transition-transform duration-300">
                 <img
                   src={
                     movie.image?.original ||
@@ -86,7 +86,7 @@ export default function Home() {
                   alt="Poster Movie"
                 />
                 <div className="absolute w-full inset-x-0 bottom-0 h-1/4 rounded-lg bg-black bg-opacity-80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition">
-                  <p className="text-yellow-200 text-xs font-bold md:text-3xl">
+                  <p className="text-yellow-200 text-md font-bold md:text-3xl">
                     {movie.name}
                   </p>
                 </div>
